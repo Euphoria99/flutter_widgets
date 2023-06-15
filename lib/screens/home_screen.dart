@@ -18,6 +18,7 @@ class HomeScreen extends StatelessWidget {
             ),
             child: const Text(
               'Open Bottom Sheet',
+              style: TextStyle(color: Colors.white),
             ),
             onPressed: () {
               showCustomModalBottomSheet(context);
