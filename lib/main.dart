@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.orange,
         useMaterial3: true,
       ),
-      home: const SafeArea(
+      home: SafeArea(
         child: CustomSliver(),
       ),
     );
