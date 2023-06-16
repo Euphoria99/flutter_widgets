@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_widgets/screens/home_screen.dart';
 import 'package:flutter_widgets/widgets/bottom_sheet.dart';
 
+import 'screens/sliver_app_bar.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -19,7 +21,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: const SafeArea(
-        child: HomeScreen(),
+        child: CustomSliver(),
       ),
     );
   }
