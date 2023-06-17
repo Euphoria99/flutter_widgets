@@ -1,28 +1,68 @@
 import 'package:flutter/material.dart';
 
-class CustomSliver extends StatelessWidget {
-  const CustomSliver({super.key});
+class CustomSliver extends StatefulWidget {
+  CustomSliver({super.key});
+
+  @override
+  State<CustomSliver> createState() => _CustomSliverState();
+}
+
+class _CustomSliverState extends State<CustomSliver> {
+  ScrollController _scrollController = ScrollController();
+  bool _showTitle = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController.addListener(_scrollListener);
+  }
+
+  @override
+  void dispose() {
+    _scrollController.removeListener(_scrollListener);
+    _scrollController.dispose();
+    super.dispose();
+  }
+
+  void _scrollListener() {
+    if (_scrollController.offset > 50 && _showTitle) {
+      setState(() {
+        _showTitle = false;
+      });
+    } else if (_scrollController.offset <= 0 && !_showTitle) {
+      setState(() {
+        _showTitle = true;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.deepPurple[100],
         body: CustomScrollView(
+          controller: _scrollController,
           slivers: [
             //sliver app bar
-            const SliverAppBar(
+            SliverAppBar(
               backgroundColor: Colors.deepPurple,
               leading: Icon(Icons.menu),
-              // title: Text('H A W A I I'),
+              title: AnimatedOpacity(
+                duration: Duration(milliseconds: 200),
+                opacity: _showTitle ? 1.0 : 0.0,
+                child: Text('H A W A I I'),
+              ),
               // centerTitle: true,
               expandedHeight: 400,
               pinned: true,
               floating: false,
-              flexibleSpace: FlexibleSpaceBar(
+              flexibleSpace: const FlexibleSpaceBar(
                 background: Image(
-                    image: NetworkImage(
-                        'https://escales.ponant.com/wp-content/uploads/2020/12/plage.jpg.webp'),
-                    fit: BoxFit.cover),
+                  image: NetworkImage(
+                    'https://escales.ponant.com/wp-content/uploads/2020/12/plage.jpg.webp',
+                  ),
+                  fit: BoxFit.cover,
+                ),
                 centerTitle: true,
                 title: Text(
                   'S L I V E R A P P B A R',
