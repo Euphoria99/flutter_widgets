@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_widgets/screens/gridview_screen.dart';
 import 'package:flutter_widgets/screens/home_screen.dart';
 import 'package:flutter_widgets/widgets/bottom_sheet.dart';
 
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: SafeArea(
-        child: CustomSliver(),
+        child: GridViewScreen(),
       ),
     );
   }
