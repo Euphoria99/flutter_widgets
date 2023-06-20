@@ -3,6 +3,7 @@ import 'package:flutter_widgets/screens/gridview_screen.dart';
 import 'package:flutter_widgets/screens/home_screen.dart';
 import 'package:flutter_widgets/widgets/bottom_sheet.dart';
 
+import 'screens/sliding_panel_screen.dart';
 import 'screens/sliver_app_bar.dart';
 
 void main() {
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: SafeArea(
-        child: GridViewScreen(),
+        child: SlidingPanelScreen(),
       ),
     );
   }
