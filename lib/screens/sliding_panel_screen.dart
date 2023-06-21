@@ -13,12 +13,18 @@ class SlidingPanelScreen extends StatefulWidget {
 
 class _SlidingPanelScreenState extends State<SlidingPanelScreen> {
   final panelController = PanelController();
-  bool isPanelHidden = false;
+  bool isPanelHidden = true;
 
   @override
   void initState() {
     super.initState();
-    // panelController.hide();
+    Future.delayed(
+      Duration(milliseconds: 100),
+      () {
+        panelController.hide();
+        // Set the flag directly
+      },
+    );
   }
 
   @override
@@ -37,7 +43,7 @@ class _SlidingPanelScreenState extends State<SlidingPanelScreen> {
         maxHeight: panelHeightOpened,
         parallaxEnabled: true,
         parallaxOffset: .5,
-        defaultPanelState: PanelState.OPEN,
+        defaultPanelState: PanelState.CLOSED,
         borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(24.0),
           topRight: Radius.circular(24.0),
